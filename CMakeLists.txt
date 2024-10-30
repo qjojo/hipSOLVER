@@ -104,8 +104,6 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${ROCM_PATH}/lib
 list(APPEND CMAKE_PREFIX_PATH ${ROCM_PATH}/lib/cmake/hip /opt/rocm /opt/rocm/llvm /opt/rocm/hip)
 
 option(BUILD_SHARED_LIBS "Build hipSOLVER as a shared library" ON)
-set(BUILD_WITH_SPARSE_DEFAULT OFF)
-
 option(BUILD_ADDRESS_SANITIZER "Build with address sanitizer enabled" OFF)
 option(BUILD_CODE_COVERAGE "Build hipSOLVER with code coverage enabled" OFF)
 option(BUILD_HIPBLAS_TESTS "Build additional tests to ensure hipBLAS and hipSOLVER are compatible (requires installed hipBLAS)" OFF)
@@ -118,7 +116,7 @@ option(HIPSOLVER_FIND_PACKAGE_LAPACK_CONFIG "Skip module mode search for LAPACK"
 option(BUILD_FORTRAN_BINDINGS "Build the Fortran bindings" "${UNIX}")
 
 if(NOT BUILD_SHARED_LIBS)
-  set(BUILD_WITH_SPARSE CACHE OFF)
+  add_compile_definitions(HIPSOLVER_STATIC_LIB)
 endif()
 
 if(BUILD_FORTRAN_BINDINGS)
