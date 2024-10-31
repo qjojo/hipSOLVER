@@ -109,7 +109,7 @@ option(BUILD_CODE_COVERAGE "Build hipSOLVER with code coverage enabled" OFF)
 option(BUILD_HIPBLAS_TESTS "Build additional tests to ensure hipBLAS and hipSOLVER are compatible (requires installed hipBLAS)" OFF)
 option(BUILD_HIPSPARSE_TESTS "Build additional tests to cover sparse functionality (requires installed hipSPARSE)" ON)
 # BUILD_SHARED_LIBS is a cmake built-in; we make it an explicit option such that it shows in cmake-gui
-option(BUILD_WITH_SPARSE "Build hipSOLVER with sparse functionality available at build time (requires installed dependencies)" ON)
+option(BUILD_WITH_SPARSE "Build hipSOLVER with sparse functionality available at build time (requires installed dependencies)" OFF)
 option(BUILD_VERBOSE "Output additional build information" OFF)
 option(USE_CUDA "Look for CUDA and use that as a backend if found" OFF)
 option(HIPSOLVER_FIND_PACKAGE_LAPACK_CONFIG "Skip module mode search for LAPACK" ON)
