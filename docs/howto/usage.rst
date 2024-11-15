@@ -115,7 +115,7 @@ Unsupported methods
   * :ref:`hipsolverSpXcsrlsvcholHost <sparse_csrlsvcholHost>` with `reorder = 1`
   * :ref:`hipsolverSpXcsrlsvchol <sparse_csrlsvchol>` with `reorder = 1`
 
-- The functions :ref:`hipsolverSpScsrlsvqr <sparse_csrlsvqr>` are currently implemented by converting the sparse input matrix to a dense
+- The function :ref:`hipsolverSpScsrlsvqr <sparse_csrlsvqr>` is currently implemented by converting the sparse input matrix to a dense
   matrix, and therefore do not support any reordering method.
 
 .. _sparse_performance:
@@ -135,11 +135,11 @@ Performance implications of the hipsolverSp API
   will allocate space for sparse matrices on the host, copy the data to the host, use SuiteSparse to perform the symbolic factorization, and
   then copy the resulting data back to the device.
 
-  (:ref:`hipsolverSpXcsrlsvchol <sparse_csrlsvchol>` may perform slower and will require more memory usage than
+  (:ref:`hipsolverSpXcsrlsvchol <sparse_csrlsvchol>` might perform slower and will require more memory usage than
   :ref:`hipsolverSpXcsrlsvcholHost <sparse_csrlsvcholHost>`.)
 
-- The functions :ref:`hipsolverSpScsrlsvqr <sparse_csrlsvqr>` are currently implemented by converting the sparse input matrix to a dense
-  matrix, and then running the dense factorization and linear solver on the result. This may result in slower-than-expected performance and
+- The function :ref:`hipsolverSpScsrlsvqr <sparse_csrlsvqr>` is currently implemented by converting the sparse input matrix to a dense
+  matrix, and then running the dense factorization and linear solver on the result. This might result in slower-than-expected performance and
   significant memory usage for large matrices.
 
   (:ref:`hipsolverSpXcsrlsvqr <sparse_csrlsvqr>` must allocate enough memory to hold a dense matrix, and will have similar performance

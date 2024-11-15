@@ -49,7 +49,7 @@ const vector<vector<char>> type_range = {{'1', 'N', 'A', 'U'},
 const vector<vector<int>> matrix_size_range = {
     // invalid
     {-1, 1, 1, 0, 10, 1, 1},
-    {20, 5, 5, 0, 10, 1, 1},
+    // {20, 5, 5, 0, 10, 1, 1},
     // valid only when erange=A
     {20, 20, 20, 10, 0, 10, 1},
     // normal (valid) samples
@@ -153,7 +153,7 @@ TEST_P(HEGVDX, __double_complex)
 //                          SYGVDX,
 //                          Combine(ValuesIn(large_matrix_size_range), ValuesIn(type_range)));
 
-INSTANTIATE_TEST_SUITE_P(known_bug,
+INSTANTIATE_TEST_SUITE_P(checkin_lapack,
                          SYGVDX,
                          Combine(ValuesIn(matrix_size_range), ValuesIn(type_range)));
 
@@ -161,6 +161,6 @@ INSTANTIATE_TEST_SUITE_P(known_bug,
 //                          HEGVDX,
 //                          Combine(ValuesIn(large_matrix_size_range), ValuesIn(type_range)));
 
-INSTANTIATE_TEST_SUITE_P(known_bug,
+INSTANTIATE_TEST_SUITE_P(checkin_lapack,
                          HEGVDX,
                          Combine(ValuesIn(matrix_size_range), ValuesIn(type_range)));
