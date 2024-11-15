@@ -390,6 +390,7 @@ try
     hipsolverSpHandle* sp = (hipsolverSpHandle*)handle;
     sp->free_all();
     rocblas_destroy_handle(sp->handle);
+    rocsparse_destroy_handle(sp->sphandle);
     rocsolver_destroy_rfinfo(sp->rfinfo);
     cholmod_finish(&sp->c_handle);
     delete sp;
@@ -1110,6 +1111,8 @@ try
         return HIPSOLVER_STATUS_INVALID_VALUE;
     if(!b || !x || !singularity)
         return HIPSOLVER_STATUS_INVALID_VALUE;
+    if(reorder < 0 || reorder > 3)
+        return HIPSOLVER_STATUS_INVALID_VALUE;
 
     rocsparse_matrix_type mattype = rocsparse_get_mat_type((rocsparse_mat_descr)descrA);
     rocsparse_index_base  indbase = rocsparse_get_mat_index_base((rocsparse_mat_descr)descrA);
@@ -1135,6 +1138,10 @@ try
 
     rocblas_status st
         = rocsolver_sgels(sp->handle, rocblas_operation_none, n, n, 1, denseA, n, x, n, info);
+
+    // finalize singularity
+    CHECK_HIP_ERROR(hipMemcpy((void*)singularity, info, sizeof(int), hipMemcpyDeviceToHost));
+    *singularity = *singularity - 1;
 
     CHECK_HIP_ERROR(hipFree(denseA));
     CHECK_HIP_ERROR(hipFree(info));
@@ -1170,6 +1177,8 @@ try
         return HIPSOLVER_STATUS_INVALID_VALUE;
     if(!b || !x || !singularity)
         return HIPSOLVER_STATUS_INVALID_VALUE;
+    if(reorder < 0 || reorder > 3)
+        return HIPSOLVER_STATUS_INVALID_VALUE;
 
     rocsparse_matrix_type mattype = rocsparse_get_mat_type((rocsparse_mat_descr)descrA);
     rocsparse_index_base  indbase = rocsparse_get_mat_index_base((rocsparse_mat_descr)descrA);
@@ -1195,6 +1204,10 @@ try
 
     rocblas_status st
         = rocsolver_dgels(sp->handle, rocblas_operation_none, n, n, 1, denseA, n, x, n, info);
+
+    // finalize singularity
+    CHECK_HIP_ERROR(hipMemcpy((void*)singularity, info, sizeof(int), hipMemcpyDeviceToHost));
+    *singularity = *singularity - 1;
 
     CHECK_HIP_ERROR(hipFree(denseA));
     CHECK_HIP_ERROR(hipFree(info));
@@ -1229,6 +1242,8 @@ try
     if(!csrRowPtr || !csrColInd || !csrVal || !descrA)
         return HIPSOLVER_STATUS_INVALID_VALUE;
     if(!b || !x || !singularity)
+        return HIPSOLVER_STATUS_INVALID_VALUE;
+    if(reorder < 0 || reorder > 3)
         return HIPSOLVER_STATUS_INVALID_VALUE;
 
     rocsparse_matrix_type mattype = rocsparse_get_mat_type((rocsparse_mat_descr)descrA);
@@ -1271,6 +1286,10 @@ try
                                         n,
                                         info);
 
+    // finalize singularity
+    CHECK_HIP_ERROR(hipMemcpy((void*)singularity, info, sizeof(int), hipMemcpyDeviceToHost));
+    *singularity = *singularity - 1;
+
     CHECK_HIP_ERROR(hipFree(denseA));
     CHECK_HIP_ERROR(hipFree(info));
 
@@ -1304,6 +1323,8 @@ try
     if(!csrRowPtr || !csrColInd || !csrVal || !descrA)
         return HIPSOLVER_STATUS_INVALID_VALUE;
     if(!b || !x || !singularity)
+        return HIPSOLVER_STATUS_INVALID_VALUE;
+    if(reorder < 0 || reorder > 3)
         return HIPSOLVER_STATUS_INVALID_VALUE;
 
     rocsparse_matrix_type mattype = rocsparse_get_mat_type((rocsparse_mat_descr)descrA);
@@ -1345,6 +1366,10 @@ try
                                         (rocblas_double_complex*)x,
                                         n,
                                         info);
+
+    // finalize singularity
+    CHECK_HIP_ERROR(hipMemcpy((void*)singularity, info, sizeof(int), hipMemcpyDeviceToHost));
+    *singularity = *singularity - 1;
 
     CHECK_HIP_ERROR(hipFree(denseA));
     CHECK_HIP_ERROR(hipFree(info));

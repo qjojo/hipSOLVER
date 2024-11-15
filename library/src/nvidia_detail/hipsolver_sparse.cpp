@@ -471,13 +471,13 @@ try
                                                           n,
                                                           nnzA,
                                                           (cusparseMatDescr_t)descrA,
-                                                          csrVal,
+                                                          (cuComplex*)csrVal,
                                                           csrRowPtr,
                                                           csrColInd,
-                                                          b,
+                                                          (cuComplex*)b,
                                                           tolerance,
                                                           reorder,
-                                                          x,
+                                                          (cuComplex*)x,
                                                           singularity));
 }
 catch(...)
@@ -508,13 +508,13 @@ try
                                                           n,
                                                           nnzA,
                                                           (cusparseMatDescr_t)descrA,
-                                                          csrVal,
+                                                          (cuDoubleComplex*)csrVal,
                                                           csrRowPtr,
                                                           csrColInd,
-                                                          b,
+                                                          (cuDoubleComplex*)b,
                                                           tolerance,
                                                           reorder,
-                                                          x,
+                                                          (cuDoubleComplex*)x,
                                                           singularity));
 }
 catch(...)
