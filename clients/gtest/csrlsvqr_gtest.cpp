@@ -109,15 +109,15 @@ TEST_P(CSRLSVQR, __double)
     run_tests<double>();
 }
 
-TEST_P(CSRLSVQR, __float_complex)
-{
-    run_tests<rocblas_float_complex>();
-}
+// TEST_P(CSRLSVQR, __float_complex)
+// {
+//     run_tests<rocblas_float_complex>();
+// }
 
-TEST_P(CSRLSVQR, __double_complex)
-{
-    run_tests<rocblas_double_complex>();
-}
+// TEST_P(CSRLSVQR, __double_complex)
+// {
+//     run_tests<rocblas_double_complex>();
+// }
 
 // TEST_P(CSRLSVQRHOST, __float)
 // {

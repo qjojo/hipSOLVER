@@ -115,16 +115,20 @@ Unsupported methods
   * :ref:`hipsolverSpXcsrlsvcholHost <sparse_csrlsvcholHost>` with `reorder = 1`
   * :ref:`hipsolverSpXcsrlsvchol <sparse_csrlsvchol>` with `reorder = 1`
 
+- The functions :ref:`hipsolverSpScsrlsvqr <sparse_csrlsvqr>` are currently implemented by converting the sparse input matrix to a dense
+  matrix, and therefore do not support any reordering method.
+
 .. _sparse_performance:
 
 Performance implications of the hipsolverSp API
 ------------------------------------------------
 
-- The third-party SuiteSparse library is used to provide host-side functionality for the hipsolverSp API when using the rocSOLVER
-  backend. At present, SuiteSparse does not support single precision arrays, therefore hipSOLVER must allocate temporary double
-  precision arrays and copy the values one-by-one to and from the user-provided arguments.
+- The third-party SuiteSparse library is used to provide host-side functionality for :ref:`hipsolverSpXcsrlsvchol <sparse_csrlsvchol>`
+  when using the rocSOLVER backend. At present, SuiteSparse does not support single precision arrays, therefore hipSOLVER must allocate
+  temporary double precision arrays and copy the values one-by-one to and from the user-provided arguments.
 
-  (Single precision hipsolverSp functions are expected to perform slower and require more memory usage than double precision functions.)
+  (Single precision :ref:`hipsolverSpScsrlsvchol <sparse_csrlsvchol>` is expected to perform slower and require more memory usage than the
+  double precision version.)
 
 - A fully-featured, GPU-accelerated Cholesky factorization for sparse matrices has not yet been implemented in either rocSOLVER or
   rocSPARSE. Therefore, we rely on SuiteSparse to provide this functionality. The functions :ref:`hipsolverSpXcsrlsvchol <sparse_csrlsvchol>`
@@ -133,6 +137,13 @@ Performance implications of the hipsolverSp API
 
   (:ref:`hipsolverSpXcsrlsvchol <sparse_csrlsvchol>` may perform slower and will require more memory usage than
   :ref:`hipsolverSpXcsrlsvcholHost <sparse_csrlsvcholHost>`.)
+
+- The functions :ref:`hipsolverSpScsrlsvqr <sparse_csrlsvqr>` are currently implemented by converting the sparse input matrix to a dense
+  matrix, and then running the dense factorization and linear solver on the result. This may result in slower-than-expected performance and
+  significant memory usage for large matrices.
+
+  (:ref:`hipsolverSpXcsrlsvqr <sparse_csrlsvqr>` must allocate enough memory to hold a dense matrix, and will have similar performance
+  to :ref:`hipsolverXXgels <gels>`)
 
 
 .. _refactor_api_differences:

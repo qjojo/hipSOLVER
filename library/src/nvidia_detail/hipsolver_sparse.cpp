@@ -448,7 +448,7 @@ catch(...)
     return hipsolver::exception2hip_status();
 }
 
-hipsolverStatus_t hipsolverSpCcsrlsvqr(hipsolverSpHandle_t       handle,
+/*hipsolverStatus_t hipsolverSpCcsrlsvqr(hipsolverSpHandle_t       handle,
                                        int                       n,
                                        int                       nnzA,
                                        const hipsparseMatDescr_t descrA,
@@ -471,13 +471,13 @@ try
                                                           n,
                                                           nnzA,
                                                           (cusparseMatDescr_t)descrA,
-                                                          csrVal,
+                                                          (cuComplex*)csrVal,
                                                           csrRowPtr,
                                                           csrColInd,
-                                                          b,
+                                                          (cuComplex*)b,
                                                           tolerance,
                                                           reorder,
-                                                          x,
+                                                          (cuComplex*)x,
                                                           singularity));
 }
 catch(...)
@@ -508,18 +508,18 @@ try
                                                           n,
                                                           nnzA,
                                                           (cusparseMatDescr_t)descrA,
-                                                          csrVal,
+                                                          (cuDoubleComplex*)csrVal,
                                                           csrRowPtr,
                                                           csrColInd,
-                                                          b,
+                                                          (cuDoubleComplex*)b,
                                                           tolerance,
                                                           reorder,
-                                                          x,
+                                                          (cuDoubleComplex*)x,
                                                           singularity));
 }
 catch(...)
 {
     return hipsolver::exception2hip_status();
-}
+}*/
 
 } //extern C

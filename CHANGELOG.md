@@ -8,6 +8,7 @@ Full documentation for hipSOLVER is available at the [hipSOLVER Documentation](h
 * Added compatibility-only functions
   * csrlsvqr
     * hipsolverSpScsrlsvqr, hipsolverSpDcsrlsvqr, hipsolverSpCcsrlsvqr, hipsolverSpZcsrlsvqr
+
 ### Changed
 ### Removed
 ### Optimized

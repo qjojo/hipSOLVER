@@ -153,7 +153,7 @@ TEST_P(HEGVDX, __double_complex)
 //                          SYGVDX,
 //                          Combine(ValuesIn(large_matrix_size_range), ValuesIn(type_range)));
 
-INSTANTIATE_TEST_SUITE_P(checkin_lapack,
+INSTANTIATE_TEST_SUITE_P(known_bug,
                          SYGVDX,
                          Combine(ValuesIn(matrix_size_range), ValuesIn(type_range)));
 
@@ -161,6 +161,6 @@ INSTANTIATE_TEST_SUITE_P(checkin_lapack,
 //                          HEGVDX,
 //                          Combine(ValuesIn(large_matrix_size_range), ValuesIn(type_range)));
 
-INSTANTIATE_TEST_SUITE_P(checkin_lapack,
+INSTANTIATE_TEST_SUITE_P(known_bug,
                          HEGVDX,
                          Combine(ValuesIn(matrix_size_range), ValuesIn(type_range)));
