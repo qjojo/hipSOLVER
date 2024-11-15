@@ -448,7 +448,7 @@ catch(...)
     return hipsolver::exception2hip_status();
 }
 
-hipsolverStatus_t hipsolverSpCcsrlsvqr(hipsolverSpHandle_t       handle,
+/*hipsolverStatus_t hipsolverSpCcsrlsvqr(hipsolverSpHandle_t       handle,
                                        int                       n,
                                        int                       nnzA,
                                        const hipsparseMatDescr_t descrA,
@@ -520,6 +520,6 @@ try
 catch(...)
 {
     return hipsolver::exception2hip_status();
-}
+}*/
 
 } //extern C

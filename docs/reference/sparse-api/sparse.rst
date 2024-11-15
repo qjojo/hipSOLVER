@@ -40,10 +40,6 @@ hipsolverSp<type>csrlsvcholHost()
 
 hipsolverSp<type>csrlsvqr()
 ---------------------------------------------------
-.. doxygenfunction:: hipsolverSpZcsrlsvqr
-   :outline:
-.. doxygenfunction:: hipsolverSpCcsrlsvqr
-   :outline:
 .. doxygenfunction:: hipsolverSpDcsrlsvqr
    :outline:
 .. doxygenfunction:: hipsolverSpScsrlsvqr

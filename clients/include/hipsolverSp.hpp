@@ -248,7 +248,7 @@ inline hipsolverStatus_t hipsolver_csrlsvqr(bool                      HOST,
         return HIPSOLVER_STATUS_NOT_SUPPORTED;
 }
 
-inline hipsolverStatus_t hipsolver_csrlsvqr(bool                      HOST,
+/*inline hipsolverStatus_t hipsolver_csrlsvqr(bool                      HOST,
                                             hipsolverSpHandle_t       handle,
                                             int                       n,
                                             int                       nnz,
@@ -308,5 +308,5 @@ inline hipsolverStatus_t hipsolver_csrlsvqr(bool                          HOST,
                                     singularity);
     else
         return HIPSOLVER_STATUS_NOT_SUPPORTED;
-}
+}*/
 /********************************************************/
