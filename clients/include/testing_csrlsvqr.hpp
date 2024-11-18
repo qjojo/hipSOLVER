@@ -233,8 +233,7 @@ void csrlsvqr_getError(hipsolverSpHandle_t       handle,
     err      = norm_error('I', n, 1, n, hX[0], hXRes[0]);
     *max_err = err > *max_err ? err : *max_err;
 
-    // TODO: Add non-positive definite test matrices
-    // also check info for singularities
+    // TODO: Add singular matrices and check info
     err = 0;
     EXPECT_EQ(hSingularity[0][0], -1);
     if(hSingularity[0][0] != -1)

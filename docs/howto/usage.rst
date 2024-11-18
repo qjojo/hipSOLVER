@@ -116,7 +116,13 @@ Unsupported methods
   * :ref:`hipsolverSpXcsrlsvchol <sparse_csrlsvchol>` with `reorder = 1`
 
 - The function :ref:`hipsolverSpScsrlsvqr <sparse_csrlsvqr>` is currently implemented by converting the sparse input matrix to a dense
-  matrix, and therefore do not support any reordering method.
+  matrix, and therefore does not support any reordering method. The host path is also currently unsupported.
+
+Arguments not referenced by rocSOLVER
+--------------------------------------
+
+- The `reorder` and `tolerance` arguments of :ref:`hipsolverSpScsrlsvqr <sparse_csrlsvqr>` are not referenced by the rocSOLVER
+  backend.
 
 .. _sparse_performance:
 

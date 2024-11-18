@@ -1111,8 +1111,8 @@ try
         return HIPSOLVER_STATUS_INVALID_VALUE;
     if(!b || !x || !singularity)
         return HIPSOLVER_STATUS_INVALID_VALUE;
-    if(reorder < 0 || reorder > 3)
-        return HIPSOLVER_STATUS_INVALID_VALUE;
+    // if(reorder < 0 || reorder > 3)
+    //     return HIPSOLVER_STATUS_INVALID_VALUE;
 
     rocsparse_matrix_type mattype = rocsparse_get_mat_type((rocsparse_mat_descr)descrA);
     rocsparse_index_base  indbase = rocsparse_get_mat_index_base((rocsparse_mat_descr)descrA);
@@ -1177,8 +1177,8 @@ try
         return HIPSOLVER_STATUS_INVALID_VALUE;
     if(!b || !x || !singularity)
         return HIPSOLVER_STATUS_INVALID_VALUE;
-    if(reorder < 0 || reorder > 3)
-        return HIPSOLVER_STATUS_INVALID_VALUE;
+    // if(reorder < 0 || reorder > 3)
+    //     return HIPSOLVER_STATUS_INVALID_VALUE;
 
     rocsparse_matrix_type mattype = rocsparse_get_mat_type((rocsparse_mat_descr)descrA);
     rocsparse_index_base  indbase = rocsparse_get_mat_index_base((rocsparse_mat_descr)descrA);
