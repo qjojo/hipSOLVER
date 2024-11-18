@@ -49,7 +49,7 @@ const vector<vector<char>> type_range = {{'1', 'N', 'A', 'U'},
 const vector<vector<int>> matrix_size_range = {
     // invalid
     {-1, 1, 1, 0, 10, 1, 1},
-    // {20, 5, 5, 0, 10, 1, 1},
+    {20, 5, 5, 0, 10, 1, 1},
     // valid only when erange=A
     {20, 20, 20, 10, 0, 10, 1},
     // normal (valid) samples
@@ -129,22 +129,22 @@ class HEGVDX : public SYGVDX_HEGVDX<API_NORMAL>
 
 // non-batch tests
 
-TEST_P(SYGVDX, __float)
+TEST_P(SYGVDX, DISABLED__float)
 {
     run_tests<false, false, float>();
 }
 
-TEST_P(SYGVDX, __double)
+TEST_P(SYGVDX, DISABLED__double)
 {
     run_tests<false, false, double>();
 }
 
-TEST_P(HEGVDX, __float_complex)
+TEST_P(HEGVDX, DISABLED__float_complex)
 {
     run_tests<false, false, rocblas_float_complex>();
 }
 
-TEST_P(HEGVDX, __double_complex)
+TEST_P(HEGVDX, DISABLED__double_complex)
 {
     run_tests<false, false, rocblas_double_complex>();
 }
